@@ -5,7 +5,7 @@ if exists("b:current_syntax")
   finish
 endif
 
-syn match caddyfileComment ' *#.*$'
+syn match caddyfileComment '\s*#.*$'
 
 syn region caddyfileString start=+\z(["']\)+ end=+\z1+ skip=+\\\\\|\\\z1+
 
