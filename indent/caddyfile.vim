@@ -1,4 +1,4 @@
-if exists("b:did_indent")
+if exists('b:did_indent')
 	finish
 endif
 let b:did_indent = 1
@@ -10,13 +10,13 @@ setlocal indentkeys+=<:>,0=},0=)
 " setlocal cindent
 
 if exists('*shiftwidth')
-  func s:sw()
-    return shiftwidth()
-  endfunc
+	func s:sw()
+		return shiftwidth()
+	endfunc
 else
-  func s:sw()
-    return &sw
-  endfunc
+	func s:sw()
+		return &sw
+	endfunc
 endif
 
 function! GetCaddyfileIndent(lnum)
@@ -30,11 +30,11 @@ function! GetCaddyfileIndent(lnum)
 
 	let ind = indent(prevlnum)
 
-	if prevl =~ '{\s*'
+	if prevl =~ '{\s*$'
 		let ind += s:sw()
 	endif
 
-	if thisl =~ '^\s*}'
+	if thisl =~ '^\s*}\s*$'
 		let ind -= s:sw()
 	endif
 
