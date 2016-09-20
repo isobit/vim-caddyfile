@@ -1,4 +1,4 @@
-# vim-caddyline
+# vim-caddyfile
 
 Vim syntax for [Caddy's](https://caddyserver.com/) [Caddyfile](https://caddyserver.com/docs/caddyfile).
 
