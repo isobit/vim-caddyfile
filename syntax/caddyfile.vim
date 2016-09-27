@@ -5,12 +5,17 @@ if exists("b:current_syntax")
 	finish
 endif
 
-syn match caddyDirective "^\s*\([a-z]\+\)"
-syn match caddySubdirective "^\s*\([a-z]\+\)" contained containedin=caddyDirectiveBlock
-syn region caddyDirectiveBlock matchgroup=caddyDirective start="^\s*\([a-z]\+\).*{"ms=e-1 end="}"
-syn match caddyHost "^\(https\?:\/\/\)\?\(\(\w\{2,}\.\)\(\w\{2,}\.\?\)\+\|localhost\)\(:[0-9]\{1,5}\)\?"
+syn match caddyDirective "^\s*\([a-z]\+\)" nextgroup=caddyDirectiveArgs skipwhite
+syn region caddyDirectiveArgs start="" end="{"me=s-1 oneline contained contains=caddyPlaceholder nextgroup=caddyDirectiveBlock skipwhite
+syn region caddyDirectiveBlock start="{" skip="\\}" end="}" contained contains=caddySubdirective
 
-syn region caddyPlaceholder start="{" end="}" oneline
+syn match caddySubdirective "^\s*\([a-zA-Z0-9_]\+\)" contained nextgroup=caddySubdirectiveArgs skipwhite
+syn region caddySubdirectiveArgs start="" end="$" oneline contained contains=caddyPlaceholder
+
+syn match caddyHost "\(https\?:\/\/\)\?\(\(\w\{2,}\.\)\(\w\{2,}\.\?\)\+\|localhost\)\(:[0-9]\{1,5}\)\?" nextgroup=caddyHost,caddyHostBlock skipwhite
+syn region caddyHostBlock start="{" skip="\\}" end="}" contained contains=caddyDirective
+
+syn region caddyPlaceholder start="{" skip="\\}" end="}" oneline contained
 syn region caddyString start='"' skip='\\\\\|\\"' end='"'
 syn match caddyComment "#.*$"
 

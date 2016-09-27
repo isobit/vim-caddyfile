@@ -5,3 +5,6 @@ Vim syntax for [Caddy's](https://caddyserver.com/) [Caddyfile](https://caddyserv
 ## Installation
 ### Vundle
 Put `Bundle 'joshglendenning/vim-caddyfile'` in your vimrc and do `:BundleInstall`.
+
+## Preview
+![preview](https://raw.githubusercontent.com/joshglendenning/vim-caddyfile/master/images/caddyfile-preview.png)
