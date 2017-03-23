@@ -12,7 +12,7 @@ syn region caddyDirectiveBlock start="{" skip="\\}" end="}" contained contains=c
 syn match caddySubdirective "^\s*\([a-zA-Z0-9_]\+\)" contained nextgroup=caddySubdirectiveArgs skipwhite
 syn region caddySubdirectiveArgs start="" end="\(#\|$\)"me=s-1 oneline contained contains=caddyPlaceholder,caddyString
 
-syn match caddyHost "\(https\?:\/\/\)\?\(\(\w\{2,}\.\)\(\w\{2,}\.\?\)\+\|localhost\)\(:[0-9]\{1,5}\)\?" nextgroup=caddyHostBlock skipwhite
+syn match caddyHost "\(https\?:\/\/\)\?\(\(\w\{1,}\.\)\(\w\{2,}\.\?\)\+\|localhost\)\(:[0-9]\{1,5}\)\?" nextgroup=caddyHostBlock skipwhite
 syn region caddyHostBlock start="{" skip="\\}" end="}" contained contains=caddyDirective,caddyComment
 
 syn region caddyPlaceholder start="{" skip="\\}" end="}" oneline contained
