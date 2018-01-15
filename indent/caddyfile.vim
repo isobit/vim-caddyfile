@@ -9,11 +9,11 @@ setlocal indentexpr=GetCaddyfileIndent(v:lnum)
 setlocal indentkeys+=<:>,0=},0=)
 
 if exists('*shiftwidth')
-	func s:sw()
+	function! s:sw()
 		return shiftwidth()
 	endfunc
 else
-	func s:sw()
+	function! s:sw()
 		return &sw
 	endfunc
 endif
