@@ -1,5 +1,6 @@
-" Language:	    Caddyfile
-" Author:	    Josh Glendenning <josh@isobit.io>
+" Language:			Caddyfile
+" Maintainer:		0az <0az@afzhou.com>
+" Original Author:	Josh Glendenning <josh@isobit.io>
 
 if exists('b:did_ftplugin')
 	finish
