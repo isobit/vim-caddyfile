@@ -26,7 +26,7 @@ syn region caddyNamedMatcherDefBlock start="{" skip="\\}" end="}" contained cont
 
 syn region caddyPlaceholder start="{" skip="\\}" end="}" oneline contained
 syn region caddyString start='"' skip='\\\\\|\\"' end='"' oneline
-syn match caddyComment "#.*$"
+syn region caddyComment start="#" end="$" oneline
 
 hi link caddyDirective Keyword
 hi link caddySubdirective Structure
