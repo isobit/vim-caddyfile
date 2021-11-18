@@ -18,12 +18,15 @@ syn match caddyImportPattern "\v\c\S+" contained nextgroup=caddyImportArgs skipw
 syn region caddyImportArgs start="" end="$"me=s-1 oneline contained contains=caddyPlaceholder,caddyString,caddyNamedMatcher
 
 syn match caddyHost "\v\c^\s*\zs(https?://)?(([0-9a-z-]+\.)([0-9a-z-]+\.?)+)?(:\d{1,5})?" nextgroup=caddyHostBlock skipwhite
-syn region caddyHostBlock start="{" skip="\\}" end="}" contained contains=caddyDirective,caddyComment,caddyImport
+syn region caddyHostBlock start="{" skip="\\}" end="}" contained contains=caddyDirective,caddyComment,caddyNamedMatcherDef,caddyImport
+
+syn match caddyNamedMatcher "\v^\s*\zs\@\S+" contained skipwhite
+syn match caddyNamedMatcherDef "\v\s*\zs\@\S+" nextgroup=caddyNamedMatcherDefBlock
+syn region caddyNamedMatcherDefBlock start="{" skip="\\}" end="}" contained contains=caddySubdirective,caddyComment,caddyImport
 
 syn region caddyPlaceholder start="{" skip="\\}" end="}" oneline contained
 syn region caddyString start='"' skip='\\\\\|\\"' end='"' oneline
 syn match caddyComment "#.*$"
-syn match caddyNamedMatcher "\(\s\|^\)@[a-z]\+"
 
 hi link caddyDirective Keyword
 hi link caddySubdirective Structure
@@ -32,6 +35,7 @@ hi link caddyImport PreProc
 hi link caddyPlaceholder Special
 hi link caddyString String
 hi link caddyComment Comment
+hi link caddyNamedMatcherDef caddyNamedMatcher
 hi link caddyNamedMatcher Identifier
 
 let b:current_syntax = "caddyfile"
