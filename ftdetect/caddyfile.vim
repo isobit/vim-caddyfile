@@ -1,1 +1,1 @@
-au BufNewFile,BufRead Caddyfile,*.Caddyfile set ft=caddyfile
+au BufNewFile,BufRead Caddyfile,*.Caddyfile,Caddyfile.* set ft=caddyfile
