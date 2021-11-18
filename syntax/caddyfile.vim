@@ -20,6 +20,10 @@ syn region caddyImportArgs start="" end="$"me=s-1 oneline contained contains=cad
 syn match caddyHost "\v\c^\s*\zs(https?://)?(([0-9a-z-]+\.)([0-9a-z-]+\.?)+)?(:\d{1,5})?" nextgroup=caddyHostBlock skipwhite
 syn region caddyHostBlock start="{" skip="\\}" end="}" contained contains=caddyDirective,caddyComment,caddyNamedMatcherDef,caddyImport
 
+" Needs priority over Host
+syn region caddySnippetDef start="("rs=e+1 end=")"re=s-1 oneline keepend contains=caddySnippet
+syn match caddySnippet "\v\w+" contained nextgroup=caddySnippetBlock skipwhite
+
 syn match caddyNamedMatcher "\v^\s*\zs\@\S+" contained skipwhite
 syn match caddyNamedMatcherDef "\v\s*\zs\@\S+" nextgroup=caddyNamedMatcherDefBlock
 syn region caddyNamedMatcherDefBlock start="{" skip="\\}" end="}" contained contains=caddySubdirective,caddyComment,caddyImport
@@ -32,6 +36,8 @@ hi link caddyDirective Keyword
 hi link caddySubdirective Structure
 hi link caddyHost Identifier
 hi link caddyImport PreProc
+hi link caddySnippetDef PreProc
+hi link caddySnippet Identifier
 hi link caddyPlaceholder Special
 hi link caddyString String
 hi link caddyComment Comment
