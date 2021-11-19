@@ -18,7 +18,7 @@ syn match caddyImport "\v^\s*(import)" nextgroup=caddyImportPattern skipwhite
 syn match caddyImportPattern "\v\c\S+" contained nextgroup=caddyImportArgs skipwhite
 syn region caddyImportArgs start="" end="$"me=s-1 oneline contained contains=caddyPlaceholder,caddyString,caddyNamedMatcher
 
-syn match caddyHost "\v\c^\s*\zs(https?://)?(([0-9a-z-]+\.)([0-9a-z-]+\.?)+)?(:\d{1,5})?" nextgroup=caddyHostBlock skipwhite
+syn match caddyHost "\v\c^\s*\zs(https?://)?(([0-9a-z-]+\.)([0-9a-z-]+\.?)+|[0-9a-z-]+)?(:\d{1,5})?" nextgroup=caddyHostBlock skipwhite
 syn region caddyHostBlock start="{" skip="\\}" end="}" contained contains=caddyDirective,caddyComment,caddyNamedMatcherDef,caddyImport
 
 " Needs priority over Host
