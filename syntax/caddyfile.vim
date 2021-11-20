@@ -6,15 +6,15 @@ if exists("b:current_syntax")
 	finish
 endif
 
-syn match caddyDirective "^\s*\([a-zA-Z0-9_]\+\)" nextgroup=caddyDirectiveArgs skipwhite
+syn match caddyDirective "\v^\s*(\w\S*)" nextgroup=caddyDirectiveArgs skipwhite
 syn region caddyDirectiveArgs start="" end="\({\|#\|$\)"me=s-1 oneline contained contains=caddyPlaceholder,caddyString,caddyNamedMatcher nextgroup=caddyDirectiveBlock skipwhite
 syn region caddyDirectiveBlock start="{" skip="\\}" end="}" contained contains=caddySubdirective,caddyComment,caddyImport
 
-syn match caddySubdirective "^\s*\([a-zA-Z0-9_]\+\)" contained nextgroup=caddySubdirectiveArgs skipwhite
+syn match caddySubdirective "\v^\s*(\w\S*)" contained nextgroup=caddySubdirectiveArgs skipwhite
 syn region caddySubdirectiveArgs start="" end="\(#\|$\)"me=s-1 oneline contained contains=caddyPlaceholder,caddyString,caddyNamedMatcher
 
 " Needs priority over Directive
-syn match caddyImport "\v^\s*(import)" nextgroup=caddyImportPattern skipwhite
+syn match caddyImport "\v^\s*<import>" nextgroup=caddyImportPattern skipwhite
 syn match caddyImportPattern "\v\c\S+" contained nextgroup=caddyImportArgs skipwhite
 syn region caddyImportArgs start="" end="$"me=s-1 oneline contained contains=caddyPlaceholder,caddyString,caddyNamedMatcher
 
